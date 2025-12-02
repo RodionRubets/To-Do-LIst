@@ -49,6 +49,12 @@ struct SettingsView: View {
                         .font(.body)
                         .bold()
                 }
+                
+                Section(header: Text("Developer")) {
+                    Text("Rodion Rubets")
+                        .font(.body)
+                        .bold()
+                }
             }
             .background(Color.white)
             .scrollContentBackground(.hidden)

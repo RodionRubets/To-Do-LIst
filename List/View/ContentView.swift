@@ -19,17 +19,16 @@ struct ContentView: View {
                 // MARK: - Top input field
                 HStack {
                     TextField("Enter your text", text: $vm.newTaskText)
-                        .padding(10)
+                        .padding(14)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.black, lineWidth: 0.1))
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.black, lineWidth: 0.5))
                         
-                    
                     Button(action: {
                         vm.addTask()
                         hideKeyboard()
                     }) {
-                        Image(systemName: "plus.app.fill")
+                        Image(systemName: "square.and.pencil")
                             .font(.title2)
                             .foregroundColor(theme.currentColor.color)
                     }
