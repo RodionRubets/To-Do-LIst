@@ -2,32 +2,11 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @ObservedObject var theme: ThemeViewModel
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack {
-            
             Form {
-                Section(header: Text("Interface Color")) {
-                    HStack {
-                        ForEach(AppColor.allCases) { color in
-                            Circle()
-                                .fill(color.color)
-                                .frame(width: 40, height: 40)
-                                .overlay(
-                                    Circle()
-                                        .stroke(Color.primary.opacity(
-                                            theme.currentColor == color ? 1 : 0
-                                        ), lineWidth: 3)
-                                )
-                                .onTapGesture {
-                                    theme.setColor(color)
-                                }
-                        }
-                    }
-                    .padding(.vertical, 8)
-                }
-                
                 Section(header: Text("Problem?")) {
                     Button(action: {
                         openEmail()
@@ -35,14 +14,20 @@ struct SettingsView: View {
                         HStack {
                             Image(systemName: "envelope")
                                 .font(.title2)
+                                .foregroundColor(Color.blue)
                             Text("You can report a problem!")
                                 .foregroundColor(.black)
                                 .font(.body)
+                                
                         }
                     }
                     
+                    
+                    
 
                 }
+                
+                
                 
                 Section(header: Text("Version")) {
                     Text("1.0.0")
@@ -54,21 +39,33 @@ struct SettingsView: View {
                     Text("Rodion Rubets")
                         .font(.body)
                         .bold()
+                
                 }
             }
             .background(Color.white)
             .scrollContentBackground(.hidden)
-            
-//            Rectangle()
-//                .fill(Color.black.opacity(0.15))
-//                .frame(height: 1)
-//            
-//            Text("Version: 1.0.0")
-//                .font(.caption)
-//                .bold()
-//                .padding(.top, 18)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                              HStack(spacing: 3) {
+                                  Image(systemName: "gearshape.fill")
+                                      .foregroundColor(.secondary)
+
+                                  Text("Settings")
+                                      .font(.headline)
+                              }
+                          }
+                
+                ToolbarItem(placement: .topBarLeading) {
+                    Button() {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "arrow.turn.up.left")
+                    }
+                    .font(.custom(String("🔄"), size: 22))
+                    
+                }
+            }
         }
-        .navigationTitle("Settings")
     }
 }
 
@@ -84,5 +81,5 @@ func openEmail() {
 }
 
 #Preview {
-    SettingsView(theme: ThemeViewModel())
+    SettingsView()
 }
