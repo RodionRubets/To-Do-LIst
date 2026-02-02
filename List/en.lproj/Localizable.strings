@@ -1,0 +1,17 @@
+app_title = "To-Do";
+all_tasks = "All Tasks";
+new_list = "New List";
+create = "Create";
+cancel = "Cancel";
+settings = "Settings";
+today = "Today";
+completed = "Completed";
+
+app_title = "Справи";
+all_tasks = "Усі завдання";
+new_list = "Новий список";
+create = "Створити";
+cancel = "Скасувати";
+settings = "Налаштування";
+today = "Сьогодні";
+completed = "Виконані";
